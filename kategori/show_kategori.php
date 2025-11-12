@@ -95,7 +95,7 @@ if (isset($_SESSION['level'])) {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                <a href="hapus.php?id_buku=<?= $data['id_kategori']; ?>" class="btn btn-danger">Hapus</a>
+                                <a href="hapus_kategori.php?id_kategori=<?= $data['id_kategori']; ?>" class="btn btn-danger">Hapus</a>
                             </div>
                             </div>
                         </div>
