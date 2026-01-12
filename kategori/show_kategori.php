@@ -82,17 +82,32 @@ if (isset($_SESSION['level'])) {
                         <div class="modal fade" id="modalubah<?= $nomor; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah Kategori</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        modalubah<?= $nomor; ?>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                    </div>
+                                    <form action="update_kategori.php" method="post">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah Kategori</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <label for="">Nama Kategori</label>
+                                                    <input type="hidden" name="id_kategori" value="<?= $data['id_kategori']; ?>">
+                                                    <input type="text" name="nama_kategori" id="" class="form-control mt-1" value="<?= $data['nama_kategori']; ?>">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <label for="">Deskripsi</label>
+                                                    <textarea name="ket_kategori" id="" class="form-control"><?= $data['ket_kategori']; ?></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <input type="submit" value="Ubah Data" class="btn btn-warning">
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
