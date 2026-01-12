@@ -83,57 +83,7 @@ if (isset($_SESSION['level'])) {
                         </td>
 
                         <!-- Modal -->
-<<<<<<< Updated upstream
                         <div class="modal fade" id="modalhapus<?= $nomor; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-=======
-                        <div class="modal fade" id="modalubah<?= $nomor; ?>" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form action="update_kategori.php" method="post">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah Kategori <?= $data['nama_kategori']." | ID = ".$data['id_kategori']; ?></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                        
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <label for="" class="mt-2">Nama Kategori</label>
-                                                <input type="hidden" name="id_kategori" id="" value="<?= $data['id_kategori']; ?>">
-                                                <input type="text" name="nama_kategori" id="" class="form-control mt-1" value="<?= $data['nama_kategori']; ?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <label for="" class="mt-2">Deskripsi</label>
-                                                <textarea name="ket_kategori" id="" class="mt-1 form-control"><?= $data['ket_kategori']; ?></textarea>
-                                            </div>
-                                        </div>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <input type="submit" value="Ubah Data" class="btn btn-warning">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Akhir Modal Ubah -->
-                    </td>
-
-                    <!-- Awal Modal Hapus -->
-                    <!-- Button trigger modal -->
-                    <td>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalhapus<?= $nomor; ?>">
-                            Hapus
-                        </button>
-                    </td>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="modalhapus<?= $nomor; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
->>>>>>> Stashed changes
                         <div class="modal-dialog">
                             <div class="modal-content">
                             <div class="modal-header bg-danger">
