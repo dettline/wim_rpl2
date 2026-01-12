@@ -1,11 +1,11 @@
 <?php
-    session_start();
-    $_SESSION['menu']="Kategori";
-    include "../includes/header.php";
-    include "../includes/koneksi.php";
+session_start();
+$_SESSION['menu'] = "Kategori";
+include "../includes/header.php";
+include "../includes/koneksi.php";
 ?>
 
-<?php 
+<?php
 if (isset($_SESSION['level'])) {
 ?>
     <!-- Ini tampilan untuk ADMIN -->
@@ -14,39 +14,39 @@ if (isset($_SESSION['level'])) {
         <hr>
 
         <!-- Awal Modal -->
-         <!-- Button trigger modal -->
+        <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Tambah Kategori
+            Tambah Kategori
         </button>
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Kategori</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Kategori</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-                    <form action="input_kategori.php" method="post">
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="">Nama Kategori</label>
-                                <input type="text" name="nama_kategori" id="" class="form-control">
+                        <form action="input_kategori.php" method="post">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="">Nama Kategori</label>
+                                    <input type="text" name="nama_kategori" id="" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <label for="">Deskripsi Kategori</label>
+                                    <textarea name="ket_kategori" id="" class="form-control" required></textarea>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <label for="">Deskripsi Kategori</label>
-                                <textarea name="ket_kategori" id="" class="form-control" required></textarea>
-                            </div>
-                        </div>
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" value="Simpan" class="btn btn-primary">
-                </div>
-                </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" value="Simpan" class="btn btn-primary">
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -62,48 +62,73 @@ if (isset($_SESSION['level'])) {
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM tb_kategori";
-                    $sql_eksekusi =  mysqli_query($koneksi, $sql);
-                    $nomor=1;
-                    while($data = mysqli_fetch_array($sql_eksekusi))
-                    {
-                        echo "<tr>";
-                        echo "  <td>".$nomor++."</td>";
-                        echo "  <td>".$data['nama_kategori']."</td>";
-                        echo "  <td>".$data['ket_kategori']."</td>";
-                    ?>
-                        <td>Ubah</td>
-                        
-                        <!-- Awal Modal Hapus -->
+                $sql = "SELECT * FROM tb_kategori";
+                $sql_eksekusi =  mysqli_query($koneksi, $sql);
+                $nomor = 1;
+                while ($data = mysqli_fetch_array($sql_eksekusi)) {
+                    echo "<tr>";
+                    echo "  <td>" . $nomor++ . "</td>";
+                    echo "  <td>" . $data['nama_kategori'] . "</td>";
+                    echo "  <td>" . $data['ket_kategori'] . "</td>";
+                ?>
+                    <td>
+                        <!-- Awal Modal Ubah -->
                         <!-- Button trigger modal -->
-                        <td>
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalhapus<?= $nomor; ?>">
-                                Hapus
-                            </button>
-                        </td>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalubah<?= $nomor; ?>">
+                            Ubah
+                        </button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="modalhapus<?= $nomor; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modalubah<?= $nomor; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah Kategori</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        modalubah<?= $nomor; ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Akhir Modal Ubah -->
+                    </td>
+
+                    <!-- Awal Modal Hapus -->
+                    <!-- Button trigger modal -->
+                    <td>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalhapus<?= $nomor; ?>">
+                            Hapus
+                        </button>
+                    </td>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalhapus<?= $nomor; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                            <div class="modal-header bg-danger">
-                                <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Hapus Data</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Apakah anda yakin ingin menghapus kategori <b><?= $data['nama_kategori']; ?></b>?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                <a href="hapus_kategori.php?id_kategori=<?= $data['id_kategori']; ?>" class="btn btn-danger">Hapus</a>
-                            </div>
+                                <div class="modal-header bg-danger">
+                                    <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Hapus Data</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Apakah anda yakin ingin menghapus kategori <b><?= $data['nama_kategori']; ?></b>?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                    <a href="hapus_kategori.php?id_kategori=<?= $data['id_kategori']; ?>" class="btn btn-danger">Hapus</a>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                        <!-- Akhir Modal Hapus -->
-                    <?php
-                        echo "</tr>";
-                    }
+                    </div>
+                    <!-- Akhir Modal Hapus -->
+                <?php
+                    echo "</tr>";
+                }
                 ?>
             </tbody>
         </table>
@@ -123,5 +148,5 @@ if (isset($_SESSION['level'])) {
 ?>
 
 <?php
-    include "../includes/footer.php";
+include "../includes/footer.php";
 ?>
